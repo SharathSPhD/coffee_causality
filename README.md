@@ -93,3 +93,10 @@ coffee_causality/
 3. Commit changes
 4. Push to branch
 5. Create pull request
+<<<<<<< HEAD
+=======
+
+## License
+
+GPLv3
+>>>>>>> 6a310f4 (Updated Jupyter Book with latest changes)
