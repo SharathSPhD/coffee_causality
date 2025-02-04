@@ -1,0 +1,555 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Coffee Shop Mystery: A Tale of Sales, Weather, and Statistics Gone Wild &#8212; Coffee Shop Mystery</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'anime/md/a_conv';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Coffee Shop Mystery</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    The Coffee Shop Mystery
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../cafe_chaos.html">Enter Cafe Chaos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../coffee_correlation.html">Coffee Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../causal_brew.html">Causal Brew</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../flow_dance.html">The Coffee Shop Mystery Part D: Arrive at the Transfer Entropy Viewpoint</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SharathSPhD/coffee_causality" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SharathSPhD/coffee_causality/issues/new?title=Issue%20on%20page%20%2Fanime/md/a_conv.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/anime/md/a_conv.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Coffee Shop Mystery: A Tale of Sales, Weather, and Statistics Gone Wild</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#meet-our-heroes">Meet Our Heroes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-investigation-begins">The Investigation Begins</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data-detective-s-plan">The Data Detective’s Plan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-clues-emerge">First Clues Emerge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-plot-thickens">The Plot Thickens</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-be-continued-in-part-b-first-step-into-statistical-analysis">To be continued in <strong>Part B: First Step into Statistical Analysis…</strong></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="the-coffee-shop-mystery-a-tale-of-sales-weather-and-statistics-gone-wild">
+<h1>The Coffee Shop Mystery: A Tale of Sales, Weather, and Statistics Gone Wild<a class="headerlink" href="#the-coffee-shop-mystery-a-tale-of-sales-weather-and-statistics-gone-wild" title="Link to this heading">#</a></h1>
+<section id="meet-our-heroes">
+<h2>Meet Our Heroes<a class="headerlink" href="#meet-our-heroes" title="Link to this heading">#</a></h2>
+<p>Meet Max, proud owner of <em>Café Chaos</em> (and yes, lately that name has been a bit too accurate). The café was doing great until… well, let Max tell you:</p>
+<p>“I used to have this down to a science!” Max gestures wildly at the empty tables, nearly knocking over a stack of unused cups. “Cold day? Packed house. Social media post goes viral? Line out the door. But now? It’s like my café is playing by some bizarro-universe rules!”</p>
+<p>Max’s barista, Jazz, rolls his eyes while crafting a perfect rosetta in a customer’s latte. “Maybe Mercury’s in retrograde?”</p>
+<p>Enter Priya, Max’s data-savvy friend, who happens to be enjoying her morning espresso. She pauses mid-sip, a gleam in her eye. “Or maybe,” she says, pulling out her laptop, “we’re looking at this all wrong. You don’t need astrology - you need analytics!”</p>
+</section>
+<section id="the-investigation-begins">
+<h2>The Investigation Begins<a class="headerlink" href="#the-investigation-begins" title="Link to this heading">#</a></h2>
+</section>
+<section id="the-data-detective-s-plan">
+<h2>The Data Detective’s Plan<a class="headerlink" href="#the-data-detective-s-plan" title="Link to this heading">#</a></h2>
+<p>“Here’s what we’ll do,” Priya explains, fingers flying over her keyboard. “We’ll analyze 200 days of data tracking:</p>
+<ul class="simple">
+<li><p>Daily sales (the mystery we need to solve)</p></li>
+<li><p>Weather patterns (because apparently Mother Nature’s playing tricks)</p></li>
+<li><p>Social media activity (those TikTok barista videos aren’t helping like they used to)</p></li>
+<li><p>Foot traffic (all those people walking by but not coming in… suspicious!)</p></li>
+</ul>
+<p>And just between us,” she adds with a conspiratorial whisper, “we’ll keep an eye on something Max hasn’t been tracking…”</p>
+<p>Jazz leans in, intrigued. “What’s that?”</p>
+<p>“Competitor activity,” Priya winks. “Sometimes the real story isn’t in what you see, but in what you don’t see.”</p>
+</section>
+<section id="first-clues-emerge">
+<h2>First Clues Emerge<a class="headerlink" href="#first-clues-emerge" title="Link to this heading">#</a></h2>
+<p>Looking at the first few days of data, Priya raises an eyebrow. “Well, well, well… what do we have here?”</p>
+<p>Max squints at the numbers. “What? What do you see?”</p>
+<p>“Let’s make it more visual,” Priya says. “Sometimes patterns pop out when you see the bigger picture - kind of like how you spot a heart in latte art!”</p>
+</section>
+<section id="the-plot-thickens">
+<h2>The Plot Thickens<a class="headerlink" href="#the-plot-thickens" title="Link to this heading">#</a></h2>
+<p>Priya leans forward, gesturing at her laptop screen.<br />
+<em>“Alright coffee squad, let’s decode what your data is telling us.”</em></p>
+<p><em>“First, look at your daily sales,”</em> she points to the zigzagging blue line.<br />
+<em>“It’s like watching a heart monitor during a caffeine rush - up to 100 on your best days, dropping to zero on others.”</em></p>
+<p><em>“Those zeros are when we had to close,”</em> Max winces.<br />
+<em>“But what’s with all those spikes and dips?”</em></p>
+<p><em>“Ah, that’s where it gets interesting!”</em> Priya switches to the weather overlay.<br />
+<em>“See these light blue bands? Those are your cold days. And look how your sales drop during them - from around 75 units on warm days down to about 35 on cold ones.”</em></p>
+<p>Jazz peers at the trend lines.<br />
+<em>“But what’s really wild is this competitor pattern. Look how it follows the cold weather!”</em></p>
+<p><em>“Exactly!”</em> Priya exclaims.<br />
+<em>“They’re not just randomly showing up. They’re strategically more active during cold spells - see how those blue lines track each other? But here’s the real kicker…”</em></p>
+<p>She points to the bottom boxplot.<br />
+<em>“When you have no competitor, your sales are strong - averaging around 80 units. With them? You’re lucky to hit 25. But it gets even more interesting when we combine weather and competition…”</em></p>
+<p><em>“Those four boxes,”</em> Max leans in, genuinely intrigued.<br />
+<em>“They tell the whole story, don’t they?”</em></p>
+<p><em>“Your best scenario: warm weather, no competitor - you’re hitting 75-80 units consistently. Your worst: cold weather with competitor - struggling to reach 20 units. But notice something? Even in cold weather, you do okay if the competitor’s not around.”</em></p>
+<p><em>“So it’s not just the weather?”</em> Jazz asks, forgetting about the latte they’re supposed to be making.</p>
+<p><em>“Nope! Weather is just part of the puzzle. These patterns suggest there’s something deeper going on. The kind of thing that simple averages won’t catch…”</em></p>
+<p><em>“Let me guess,”</em> Max sighs, though there’s a glint of excitement in their eyes.<br />
+<em>“Time for fancier analysis?”</em></p>
+<p><em>“Oh yes,”</em> Priya grins.<br />
+<em>“These patterns are just the appetizer. Wait until you see what regression analysis tells us about your sales recipe!”</em></p>
+<hr class="docutils" />
+<section id="to-be-continued-in-part-b-first-step-into-statistical-analysis">
+<h3>To be continued in <strong>Part B: First Step into Statistical Analysis…</strong><a class="headerlink" href="#to-be-continued-in-part-b-first-step-into-statistical-analysis" title="Link to this heading">#</a></h3>
+<p><em>(Will our heroes uncover the true recipe behind Café Chaos’s sales? Can statistical tools match the precision of a perfectly calibrated espresso machine? And will Jazz ever admit that data might be as interesting as latte art? Stay tuned…)</em></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./anime\md"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#meet-our-heroes">Meet Our Heroes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-investigation-begins">The Investigation Begins</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data-detective-s-plan">The Data Detective’s Plan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-clues-emerge">First Clues Emerge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-plot-thickens">The Plot Thickens</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-be-continued-in-part-b-first-step-into-statistical-analysis">To be continued in <strong>Part B: First Step into Statistical Analysis…</strong></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Data Science Explorer
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

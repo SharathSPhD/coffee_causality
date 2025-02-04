@@ -1,0 +1,547 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Coffee Shop Mystery Part C: Causal World &#8212; Coffee Shop Mystery</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'anime/md/c_conv';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Coffee Shop Mystery</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    The Coffee Shop Mystery
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../cafe_chaos.html">Enter Cafe Chaos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../coffee_correlation.html">Coffee Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../causal_brew.html">Causal Brew</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../flow_dance.html">The Coffee Shop Mystery Part D: Arrive at the Transfer Entropy Viewpoint</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SharathSPhD/coffee_causality" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SharathSPhD/coffee_causality/issues/new?title=Issue%20on%20page%20%2Fanime/md/c_conv.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/anime/md/c_conv.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Coffee Shop Mystery Part C: Causal World</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#previously-in-our-coffee-shop-saga">Previously in our Coffee Shop saga…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-at-the-cafe">Back at the Café…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secret-weapon-1-instrumental-variables">Secret Weapon #1: Instrumental Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decoding-the-iv-results">Decoding the IV Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secret-weapon-2-double-machine-learning">Secret Weapon #2: Double Machine Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-does-dml-say">So what does DML say?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="the-coffee-shop-mystery-part-c-causal-world">
+<h1>The Coffee Shop Mystery Part C: Causal World<a class="headerlink" href="#the-coffee-shop-mystery-part-c-causal-world" title="Link to this heading">#</a></h1>
+<section id="previously-in-our-coffee-shop-saga">
+<h2>Previously in our Coffee Shop saga…<a class="headerlink" href="#previously-in-our-coffee-shop-saga" title="Link to this heading">#</a></h2>
+<p>Our heroes discovered that basic statistical tools weren’t enough to crack the case of <em>Café Chaos</em>’s sales mystery. The correlation analysis showed relationships, but couldn’t tell what was causing what. Linear regression tried its best but left too many questions unanswered.</p>
+</section>
+<section id="back-at-the-cafe">
+<h2>Back at the Café…<a class="headerlink" href="#back-at-the-cafe" title="Link to this heading">#</a></h2>
+<p>“Okay,” Priya says, pulling up a new notebook on her laptop. “Time to break out the big guns.”</p>
+<p>“Please tell me it doesn’t involve more math,” Jazz groans while wiping down the espresso machine.</p>
+<p>“Oh, it involves <em>way</em> more math,” Priya grins. “But don’t worry - I’ll explain everything using coffee analogies.”</p>
+<p>Max peers at the screen. “What are those weird terms? ‘Instrumental Variables’? ‘Double Machine Learning’? Sounds like sci-fi.”</p>
+<p>“Think of them as our secret weapons,” Priya explains. “When simple tools aren’t enough, you need something more sophisticated. Like how you upgraded from a basic coffee grinder to that fancy burr grinder with 40 different settings.”</p>
+</section>
+<section id="secret-weapon-1-instrumental-variables">
+<h2>Secret Weapon #1: Instrumental Variables<a class="headerlink" href="#secret-weapon-1-instrumental-variables" title="Link to this heading">#</a></h2>
+<p>“First up,” Priya begins, “we have Instrumental Variables. Think of it like this: You want to know if foot traffic actually causes more sales. But maybe people are coming in <em>because</em> they see others buying coffee. It’s like a chicken-and-egg problem.”</p>
+<p>“That’s… actually a good point,” Max muses. “I can never tell if people are here because it’s busy, or if it’s busy because people are here.”</p>
+<p>“Exactly! But what if we looked at something that affects foot traffic but doesn’t directly affect sales? Like weather! Bad weather might keep people home, which means less foot traffic, which means less sales. But the weather itself isn’t directly making people buy or not buy coffee.”</p>
+<p>Jazz nods slowly. “Like how I use the steam wand temperature to control milk texture, but it’s the texture that actually affects the latte art?”</p>
+<p>“Perfect analogy! Let’s try it out.”</p>
+</section>
+<section id="decoding-the-iv-results">
+<h2>Decoding the IV Results<a class="headerlink" href="#decoding-the-iv-results" title="Link to this heading">#</a></h2>
+<p>Priya studies the output. “These numbers tell quite a story. Look at the weather’s effects - when it’s cold, foot traffic drops by about 34 people compared to warm days, and sales drop by about 36 units.”</p>
+<p>“Sounds bad,” Max frowns.</p>
+<p>“Yes, but here’s where it gets interesting,” Priya continues. “For every person change in foot traffic caused by weather, sales change by about 1.07 units - and we’re very confident about this effect since the confidence interval is tight: between 0.68 and 1.46.”</p>
+<p>“But what about the competitor numbers?” Jazz asks.</p>
+<p>“That’s the real revelation. Cold weather makes competitors 59% more likely to be present. And when weather drives competitor presence, it has a massive impact - each competitor-presence unit caused by weather reduces sales by about 61 units! The confidence interval from -79 to -42 tells us this negative effect is very real.”</p>
+<p>“So the competitor is really hurting us on cold days?” Max looks worried.</p>
+<p>Priya nods. “Exactly. But this suggests an opportunity - if we can find ways to differentiate ourselves when it’s cold…”</p>
+<p>“Deeper analysis?” Max guesses.</p>
+<p>Priya grins. “Double Machine Learning will show us even more.”</p>
+</section>
+<section id="secret-weapon-2-double-machine-learning">
+<h2>Secret Weapon #2: Double Machine Learning<a class="headerlink" href="#secret-weapon-2-double-machine-learning" title="Link to this heading">#</a></h2>
+<p>“Okay,” Priya explains, “Double Machine Learning is like… imagine you’re trying to perfect your espresso recipe. But instead of just adjusting one thing at a time, you have a super-smart robot that can test <em>all</em> the variables at once - grind size, water temperature, pressure, timing - and figure out exactly how each one affects the final shot.”</p>
+<p>“That actually sounds amazing,” Jazz admits. “Where can I get one of those robots?”</p>
+<p>“The robot is metaphorical,” Priya laughs. “But the math is real. Let’s see what it tells us about your sales.”</p>
+</section>
+<section id="so-what-does-dml-say">
+<h2>So what does DML say?<a class="headerlink" href="#so-what-does-dml-say" title="Link to this heading">#</a></h2>
+<p>Priya studies the DML results thoughtfully. “Now these numbers tell the real story.”
+“The competitor effect is brutal - each competitor presence directly reduces sales by about 45 units, plus or minus 16. That’s a huge impact, and we’re very confident about it since the confidence interval never crosses zero.”</p>
+<p>“What about the weather?” Max asks anxiously.</p>
+<p>“Cold weather has a strong direct effect too - about 36 units lower sales compared to warm days. This is separate from how it affects foot traffic or brings competitors. The narrow confidence interval from -45 to -27 shows this effect is very reliable.”</p>
+<p>“And our social media efforts?”</p>
+<p>“That’s interesting - while social media shows a small positive effect of about 3.5 units, the confidence interval crosses zero (-0.3 to 7.3). This suggests it helps, but its impact isn’t as clear-cut as the other factors.”</p>
+<p>“So what do we do?” Max looks worried.</p>
+<p>Priya leans forward. “This tells us where to focus. The competitor is your biggest challenge, especially on cold days when they have a double advantage. But that also means…”</p>
+<p>“That’s where we can make the biggest difference?” Jazz suggests.</p>
+<p>“Exactly! On cold days, when we know the competitor will be active, we need a strategy to stand out. The social media impact may be subtle, but combined with the right timing…”</p>
+<p>“There’s more to analyze?” Max guesses.</p>
+<p>“Oh yes,” Priya grins. “Wait until you see what Transfer Entropy reveals about these patterns over time.”</p>
+<hr class="docutils" />
+<p><strong>To be continued in Part D: From ML to Information Theory</strong></p>
+<p><em>(Will our heroes use their new insights to save Café Chaos? What new strategies will they develop based on these findings? And will Jazz finally admit that statistics might be as interesting as latte art? Stay tuned…)</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./anime\md"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#previously-in-our-coffee-shop-saga">Previously in our Coffee Shop saga…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-at-the-cafe">Back at the Café…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secret-weapon-1-instrumental-variables">Secret Weapon #1: Instrumental Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decoding-the-iv-results">Decoding the IV Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secret-weapon-2-double-machine-learning">Secret Weapon #2: Double Machine Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-does-dml-say">So what does DML say?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Data Science Explorer
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
