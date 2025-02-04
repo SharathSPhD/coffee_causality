@@ -1,0 +1,11 @@
+{
+    "iv_effect": 1.0661438643430727,
+    "iv_std_error": 0.19872099816115452,
+    "first_stage_diff": -33.542016129959016,
+    "reduced_form_diff": -35.76061469465218,
+    "ci_lower": 0.6766507079472099,
+    "ci_upper": 1.4556370207389355,
+    "n_warm": 140,
+    "n_cold": 60,
+    "success": true
+}

@@ -1,0 +1,12 @@
+# Table of contents
+format: jb-book
+root: intro
+chapters:
+- file: cafe_chaos
+  title: Enter Cafe Chaos
+- file: coffee_correlation
+  title: Coffee Correlation
+- file: causal_brew
+  title: Causal Brew
+- file: flow_dance
+  title: Flow Dance

@@ -1,0 +1,21 @@
+# Book settings
+title: Coffee Shop Mystery
+author: Sharath S, PhD
+logo: logo.png
+execute:
+  execute_notebooks: off
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/SharathSPhD/coffee_causality
+  branch: main
+
+# Add GitHub buttons to your book
+html:
+  use_issues_button: true
+  use_repository_button: true
+
+parse:
+  myst_enable_extensions:
+    - html_image
+    - html_admonition

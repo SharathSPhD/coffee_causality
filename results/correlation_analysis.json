@@ -1,0 +1,39 @@
+{
+    "correlations": {
+        "Weather": {
+            "Weather": 1.0,
+            "Foot_Traffic": -0.45939432959687104,
+            "Social_Media": 0.08682665419787307,
+            "Sales": -0.5593000389201148,
+            "Competitor": 0.6094930049474703
+        },
+        "Foot_Traffic": {
+            "Weather": -0.45939432959687104,
+            "Foot_Traffic": 1.0,
+            "Social_Media": -0.022480335733626646,
+            "Sales": 0.931062112474084,
+            "Competitor": -0.5379956391367355
+        },
+        "Social_Media": {
+            "Weather": 0.08682665419787307,
+            "Foot_Traffic": -0.022480335733626646,
+            "Social_Media": 1.0,
+            "Sales": 0.050468996423850304,
+            "Competitor": 0.0544134296271997
+        },
+        "Sales": {
+            "Weather": -0.5593000389201148,
+            "Foot_Traffic": 0.931062112474084,
+            "Social_Media": 0.050468996423850304,
+            "Sales": 1.0,
+            "Competitor": -0.7536916828020291
+        },
+        "Competitor": {
+            "Weather": 0.6094930049474703,
+            "Foot_Traffic": -0.5379956391367355,
+            "Social_Media": 0.0544134296271997,
+            "Sales": -0.7536916828020291,
+            "Competitor": 1.0
+        }
+    }
+}

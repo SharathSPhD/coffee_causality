@@ -1,0 +1,8 @@
+instruction set1
+for each of the markdown conversation cell create an anime that best captures the content of that cell....make the image size and rendering compatible with a typical jupyter notebook
+instruction set2
+you are supposed to capture the nuances of the conversation in each cell....give it a more informal, fun style...no suite stuff....keep it closer to the context...coffee and other mundane aspects in the talk...the plots and graphs are anyway there in the code output....don't bother about putting wordings in the images...you can't get it right
+instruction set3
+there are only 3 protogonists...don't put more people than that except for customers...you should capture the coffee shop, weather (cold, hot, rain, etc)...the coffee shop should be like an England high street one which is street facing....you need to capture other features mentioned in the talk...footfall....a street coffee vendor lurking in the street corner in cold weather...etc
+instruction set4
+provide images more than the actual conversation cells for each notebook...each of the notebook conversation cell is captured in a md file named a_conv.md, b_conv.md etc...read that instead of the notebooks....generate separate zip files per notebook 
