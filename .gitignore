@@ -43,5 +43,7 @@ wheels/
 # Folders
 logs/
 IDTxl/
-project/docs
+project_docs/
 website/
+notebooks/anime/
+notebooks/video/

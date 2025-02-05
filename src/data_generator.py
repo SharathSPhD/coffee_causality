@@ -1,5 +1,14 @@
 """
 Data Generator module for coffee shop synthetic data with hidden confounders.
+
+This module provides functionality to generate synthetic data for a coffee shop
+scenario, including various features like weather, foot traffic, and sales data.
+The generated data includes hidden confounders and causal relationships.
+
+Example:
+    >>> generator = DataGenerator(seed=42)
+    >>> data = generator.generate_data(n_days=200)
+    >>> print(data.columns)
 """
 
 import numpy as np
@@ -7,7 +16,16 @@ import pandas as pd
 from typing import Dict, Tuple, Optional
 
 class DataGenerator:
-    """Generates synthetic coffee shop data with hidden confounders."""
+    """Generates synthetic coffee shop data with hidden confounders.
+    
+    This class creates realistic synthetic data that simulates the operations of a
+    coffee shop, including various factors that might affect sales and their
+    interrelationships.
+    
+    Attributes:
+        seed (int): Random seed for reproducibility
+        effects (dict): Dictionary of true causal effects
+    """
     
     def __init__(self, seed: int = 42):
         """Initialize the data generator.

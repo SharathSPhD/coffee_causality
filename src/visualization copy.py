@@ -10,7 +10,6 @@ Example:
     >>> plt.show()
 """
 
-import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -39,26 +38,29 @@ class CausalVisualizer:
         Args:
             style (str): Matplotlib style to use. Defaults to 'default'.
         """
+        """Initialize the visualizer.
+
+        Args:
+            style (str): Matplotlib style to use. Defaults to 'default'.
+        """
         plt.style.use(style)
         if style == 'default':
             sns.set_theme()
         sns.set_palette('viridis')
     
-    def save_figure(self, fig: plt.Figure, filename: str, plots_dir: str = 'plots'):
-        """Save figure to plots directory.
+    def plot_synthetic_story(self, df: pd.DataFrame) -> List[plt.Figure]:
+        """Create a series of story-driven visualizations for synthetic data.
+
+        Creates multiple plots showing daily sales patterns, weather effects,
+        competitor analysis, and overall relationships. Each plot tells part
+        of the causal story.
 
         Args:
-            fig (plt.Figure): Figure to save
-            filename (str): Filename without extension
-            plots_dir (str): Directory to save plots in
+            df (pd.DataFrame): Generated data including all variables
+
+        Returns:
+            List[plt.Figure]: List of figures telling the story
         """
-        if not os.path.exists(plots_dir):
-            os.makedirs(plots_dir)
-        fig.savefig(os.path.join(plots_dir, f"{filename}.png"), 
-                    bbox_inches='tight', dpi=300)
-        plt.close(fig)
-    
-    def plot_synthetic_story(self, df: pd.DataFrame) -> List[plt.Figure]:
         """Create a series of story-driven visualizations for synthetic data.
 
         Creates multiple plots showing daily sales patterns, weather effects,
@@ -174,10 +176,22 @@ class CausalVisualizer:
                               corr_matrix: pd.DataFrame,
                               figsize: Tuple[int, int] = (8, 6)) -> plt.Figure:
         """Plot correlation matrix heatmap.
-        
+
         Args:
             corr_matrix (pd.DataFrame): Correlation matrix
-            figsize (tuple): Figure size
+            figsize (tuple): Figure size. Defaults to (8, 6).
+
+        Returns:
+            plt.Figure: Figure object with correlation heatmap
+        """
+        """Plot correlation matrix heatmap.
+
+        Args:
+            corr_matrix (pd.DataFrame): Correlation matrix
+            figsize (tuple): Figure size. Defaults to (8, 6).
+
+        Returns:
+            plt.Figure: Figure object with correlation heatmap
             
         Returns:
             plt.Figure: Figure object
@@ -199,135 +213,103 @@ class CausalVisualizer:
         plt.tight_layout()
         return fig
     
-    def plot_dml_effects(self, dml_results: Dict[str, Any], figsize: Tuple[int, int] = (12, 6)) -> plt.Figure:
-        """Plot DML treatment effects with confidence intervals.
-        
+    def plot_dml_results(self,
+                        dml_results: Dict[str, Any],
+                        figsize: Tuple[int, int] = (8, 6)) -> plt.Figure:
+        """Plot Double ML results.
+
         Args:
-            dml_results (dict): Dictionary of DML results by treatment
-            figsize (tuple): Figure size
+            dml_results (dict): Results from DML analysis
+            figsize (tuple): Figure size. Defaults to (8, 6).
+
+        Returns:
+            plt.Figure: Figure object with DML effects plot
+        """
+        """Plot Double ML results.
+
+        Args:
+            dml_results (dict): Results from DML analysis
+            figsize (tuple): Figure size. Defaults to (8, 6).
+
+        Returns:
+            plt.Figure: Figure object with DML effects plot
             
         Returns:
             plt.Figure: Figure object
         """
-        # Extract effects and confidence intervals
-        treatments = []
-        effects = []
-        errors = []
+        coef = dml_results['coefficient']
+        stderr = dml_results['stderr']
         
-        for treatment, result in dml_results.items():
-            if result.get('success', False):
-                treatments.append(treatment)
-                effects.append(result['ate'])
-                errors.append(result['ate_std'] * 1.96)  # 95% CI
-        
-        # Create plot
         fig, ax = plt.subplots(figsize=figsize)
-        y_pos = np.arange(len(treatments))
         
-        # Plot error bars
-        ax.errorbar(effects, y_pos, xerr=errors, fmt='o', capsize=5)
-        ax.set_yticks(y_pos)
-        ax.set_yticklabels(treatments)
+        # Plot coefficient with error bars
+        ax.errorbar(x=[coef], y=[0], xerr=[2*stderr],
+                   fmt='o', capsize=5, color='blue')
         
-        # Add reference line at zero
         ax.axvline(x=0, color='red', linestyle='--', alpha=0.5)
-        
-        # Add effect size annotations
-        for i, (effect, error) in enumerate(zip(effects, errors)):
-            ax.annotate(f'Effect: {effect:.2f}\n(±{error:.2f})',
-                        xy=(effect, i),
-                        xytext=(10, 0), 
-                        textcoords='offset points')
-        
-        ax.set_title('Treatment Effects with 95% Confidence Intervals\n(Double ML Estimates)', 
-                     fontsize=12, pad=20)
-        ax.set_xlabel('Estimated Effect on Sales')
+        ax.set_title('Double ML Treatment Effect', fontsize=12, pad=15)
+        ax.set_xlabel('Effect Size', fontsize=10)
+        ax.set_yticks([])
         
         plt.tight_layout()
         return fig
     
-    def plot_weather_iv_relationships(self,
-                                  data: pd.DataFrame,
-                                  instrument: str,
-                                  treatment: str,
-                                  outcome: str,
-                                  title_prefix: str = "") -> Tuple[plt.Figure, Tuple[float, float]]:
-        """Create boxplot visualization with weather labels and colors.
-        
+    def plot_iv_results(self,
+                       iv_results: Dict[str, Any],
+                       df: pd.DataFrame,
+                       instrument: str,
+                       treatment: str,
+                       outcome: str,
+                       figsize: Tuple[int, int] = (12, 5)) -> plt.Figure:
+        """Plot IV analysis results.
+
         Args:
-            data (pd.DataFrame): Input data
+            iv_results (dict): Results from IV analysis
+            df (pd.DataFrame): Input data
             instrument (str): Name of instrument variable
             treatment (str): Name of treatment variable
             outcome (str): Name of outcome variable
-            title_prefix (str): Prefix for plot title
-            
-        Returns:
-            Tuple[plt.Figure, Tuple[float, float]]: Figure and (first_stage_diff, reduced_form_diff)
-        """
-        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
-        
-        # Create weather labels mapping 
-        data = data.copy()
-        data['Weather_Label'] = data[instrument].map({1: 'Cold', 0: 'Warm'})
-        
-        # Color palette
-        colors = ['#F4A460', '#4B9CD3']  # Orange for Warm(0), Blue for Cold(1)
-        
-        # First stage relationship
-        sns.boxplot(data=data, x='Weather_Label', y=treatment, ax=ax1, 
-                   order=['Warm', 'Cold'], palette=colors)
-        first_stage_diff = data[data[instrument] == 1][treatment].mean() - \
-                          data[data[instrument] == 0][treatment].mean()
-        ax1.set_title(f'{title_prefix}\nFirst Stage: Cold-Warm Difference = {first_stage_diff:.2f}')
-        
-        # Reduced form relationship
-        sns.boxplot(data=data, x='Weather_Label', y=outcome, ax=ax2,
-                   order=['Warm', 'Cold'], palette=colors)
-        reduced_form_diff = data[data[instrument] == 1][outcome].mean() - \
-                           data[data[instrument] == 0][outcome].mean()
-        ax2.set_title(f'Reduced Form: Cold-Warm Difference = {reduced_form_diff:.2f}')
-        
-        plt.tight_layout()
-        return fig, (first_stage_diff, reduced_form_diff)
+            figsize (tuple): Figure size. Defaults to (12, 5).
 
-    def plot_iv_results(self,
-                       iv_results: Dict[str, Any],
-                       figsize: Tuple[int, int] = (12, 6)) -> plt.Figure:
-        """Plot IV analysis results with confidence intervals.
-        
+        Returns:
+            plt.Figure: Figure object with IV analysis plots
+        """
+        """Plot IV analysis results.
+
         Args:
             iv_results (dict): Results from IV analysis
-            figsize (tuple): Figure size
+            df (pd.DataFrame): Input data
+            instrument (str): Name of instrument variable
+            treatment (str): Name of treatment variable
+            outcome (str): Name of outcome variable
+            figsize (tuple): Figure size. Defaults to (12, 5).
+
+        Returns:
+            plt.Figure: Figure object with IV analysis plots
             
         Returns:
             plt.Figure: Figure object
         """
-        fig, ax = plt.subplots(figsize=figsize)
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=figsize)
         
-        # Plot effect estimate with confidence interval
-        x = [iv_results['iv_effect']]
-        y = [0]
-        xerr = [[iv_results['iv_effect'] - iv_results['ci_lower']],
-                [iv_results['ci_upper'] - iv_results['iv_effect']]]
+        # First stage
+        ax1.scatter(df[instrument], df[treatment], alpha=0.5)
+        ax1.plot(df[instrument], 
+                iv_results['first_stage'].predict(df[[instrument]]),
+                color='red', alpha=0.7)
+        ax1.set_title('First Stage Regression', fontsize=12)
+        ax1.set_xlabel(instrument, fontsize=10)
+        ax1.set_ylabel(treatment, fontsize=10)
         
-        ax.errorbar(x, y, xerr=xerr, fmt='o', capsize=5, color='blue',
-                    label=f'IV Effect: {iv_results["iv_effect"]:.2f}')
-        
-        # Add reference line at zero
-        ax.axvline(x=0, color='red', linestyle='--', alpha=0.5)
-        
-        # Customize plot
-        ax.set_title('IV Analysis Results with 95% CI', fontsize=12, pad=15)
-        ax.set_xlabel('Effect Size')
-        ax.set_yticks([])
-        
-        # Add annotations
-        ax.annotate(f'Effect: {iv_results["iv_effect"]:.2f}\n' +
-                   f'SE: {iv_results["iv_std_error"]:.2f}\n' +
-                   f'95% CI: [{iv_results["ci_lower"]:.2f}, {iv_results["ci_upper"]:.2f}]',
-                   xy=(iv_results['iv_effect'], 0),
-                   xytext=(10, 10),
-                   textcoords='offset points')
+        # Second stage
+        treatment_pred = iv_results['first_stage'].predict(df[[instrument]])
+        ax2.scatter(treatment_pred, df[outcome], alpha=0.5)
+        ax2.plot(treatment_pred,
+                iv_results['second_stage'].predict(treatment_pred.reshape(-1,1)),
+                color='red', alpha=0.7)
+        ax2.set_title('Second Stage Regression', fontsize=12)
+        ax2.set_xlabel(f'Predicted {treatment}', fontsize=10)
+        ax2.set_ylabel(outcome, fontsize=10)
         
         plt.tight_layout()
         return fig
@@ -336,7 +318,26 @@ class CausalVisualizer:
                                     te_values: Dict[str, float],
                                     threshold: float = 0.05,
                                     figsize: Tuple[int, int] = (10, 8)) -> plt.Figure:
-        """Plot transfer entropy as a network diagram."""
+        """Plot transfer entropy as a network diagram.
+
+        Args:
+            te_values (dict): Transfer entropy values
+            threshold (float): Minimum TE value to show. Defaults to 0.05.
+            figsize (tuple): Figure size. Defaults to (10, 8).
+
+        Returns:
+            plt.Figure: Figure object with transfer entropy network
+        """
+        """Plot transfer entropy as a network diagram.
+
+        Args:
+            te_values (dict): Transfer entropy values
+            threshold (float): Minimum TE value to show. Defaults to 0.05.
+            figsize (tuple): Figure size. Defaults to (10, 8).
+
+        Returns:
+            plt.Figure: Figure object with transfer entropy network
+        """
         if not te_values:
             fig, ax = plt.subplots(figsize=figsize)
             ax.text(0.5, 0.5, 'No significant transfer entropy found',
@@ -405,10 +406,22 @@ class CausalVisualizer:
                                 results: Dict[str, Any],
                                 df: pd.DataFrame) -> List[plt.Figure]:
         """Create story-driven comparison of different causal methods.
-        
+
         Args:
             results (dict): Results from all methods
             df (pd.DataFrame): Original data
+
+        Returns:
+            List[plt.Figure]: List of figures comparing different methods
+        """
+        """Create story-driven comparison of different causal methods.
+
+        Args:
+            results (dict): Results from all methods
+            df (pd.DataFrame): Original data
+
+        Returns:
+            List[plt.Figure]: List of figures comparing different methods
             
         Returns:
             List[plt.Figure]: List of figures telling the story

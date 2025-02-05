@@ -1,5 +1,14 @@
 """
 Causal Analysis module implementing various methods.
+
+This module provides implementations of different causal inference techniques
+including Instrumental Variables (IV), Double Machine Learning (DML), and
+Transfer Entropy analysis for analyzing causal relationships in coffee shop data.
+
+Example:
+    >>> analyzer = CausalAnalyzer()
+    >>> iv_results = analyzer.instrumental_variables(data, 'Sales', 'Foot_Traffic', 'Weather')
+    >>> print(iv_results['iv_effect'])
 """
 
 import os
@@ -23,10 +32,23 @@ from idtxl.data import Data
 from typing import Dict, Any, Tuple, Optional
 
 class CausalAnalyzer:
-    """Implements various causal inference methods."""
+    """Implements various causal inference methods.
+    
+    This class provides methods for analyzing causal relationships using
+    different approaches including IV analysis, DML, and Transfer Entropy.
+    
+    Methods:
+        instrumental_variables: Perform IV analysis
+        double_ml_analysis: Implement Double Machine Learning method
+        transfer_entropy_analysis: Calculate information flow using Transfer Entropy
+    """
     
     def __init__(self, log_file=None):
-        """Initialize the analyzer with proper logging."""
+        """Initialize the analyzer with proper logging.
+        
+        Args:
+            log_file (str, optional): Path to log file. If None, creates a timestamped file.
+        """
         # Setup logging
         if log_file is None:
             log_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'logs')
@@ -61,7 +83,14 @@ class CausalAnalyzer:
         self.logger.info("CausalAnalyzer initialized")
 
     def _format_inference_results(self, effect_array):
-        """Format array results for logging."""
+        """Format array results for logging.
+        
+        Args:
+            effect_array (np.ndarray): Array of effects to format
+            
+        Returns:
+            str: Formatted string with mean and std
+        """
         if effect_array.ndim == 1:
             return f"Mean: {np.mean(effect_array):.4f}, Std: {np.std(effect_array):.4f}"
         else:
@@ -69,7 +98,15 @@ class CausalAnalyzer:
     
     def correlation_analysis(self, df: pd.DataFrame, 
                            variables: Optional[list] = None) -> pd.DataFrame:
-        """Calculate correlations between variables."""
+        """Calculate correlations between variables.
+        
+        Args:
+            df (pd.DataFrame): Input data
+            variables (list, optional): List of variables to analyze. If None, uses all.
+            
+        Returns:
+            pd.DataFrame: Correlation matrix
+        """
         if variables is None:
             return df.corr()
         return df[variables].corr()
@@ -78,7 +115,17 @@ class CausalAnalyzer:
                           treatment: str,
                           outcome: str,
                           features: list) -> Dict[str, Any]:
-        """Run double machine learning analysis with robust inference."""
+        """Run double machine learning analysis with robust inference.
+        
+        Args:
+            df (pd.DataFrame): Input data
+            treatment (str): Treatment variable name
+            outcome (str): Outcome variable name
+            features (list): List of feature names
+            
+        Returns:
+            dict: Results including ATE, std errors, and confidence intervals
+        """
         try:
             # Validate inputs
             if not all(col in df.columns for col in [treatment, outcome] + (features if features else [])):
@@ -149,7 +196,17 @@ class CausalAnalyzer:
                              outcome: str,
                              treatment: str,
                              instrument: str) -> Dict[str, Any]:
-        """Perform instrumental variables analysis with proper standard errors."""
+        """Perform instrumental variables analysis.
+        
+        Args:
+            df (pd.DataFrame): Input data
+            outcome (str): Name of outcome variable
+            treatment (str): Name of treatment variable
+            instrument (str): Name of instrument variable
+            
+        Returns:
+            dict: Results including first stage and IV effects
+        """
         try:
             # First stage: E[D|Z=1] - E[D|Z=0]
             first_stage = df[df[instrument] == 1][treatment].mean() - \
@@ -207,7 +264,16 @@ class CausalAnalyzer:
     def transfer_entropy_analysis(self, df: pd.DataFrame,
                                 variables: list,
                                 max_lag: int = 5) -> Dict[str, float]:
-        """Calculate transfer entropy between variables using IDTxl."""
+        """Calculate transfer entropy between variables using IDTxl.
+        
+        Args:
+            df (pd.DataFrame): Input data
+            variables (list): List of variable names to analyze
+            max_lag (int, optional): Maximum lag to consider. Defaults to 5.
+            
+        Returns:
+            dict: Dictionary mapping variable pairs to their transfer entropy values
+        """
         try:
             # Normalize and detrend data
             df_norm = pd.DataFrame()
@@ -269,7 +335,15 @@ class CausalAnalyzer:
     
     def compare_methods(self, df: pd.DataFrame,
                        target: str = 'Sales') -> Dict[str, Any]:
-        """Compare different causal inference methods."""
+        """Compare different causal inference methods.
+        
+        Args:
+            df (pd.DataFrame): Input data
+            target (str, optional): Target variable. Defaults to 'Sales'.
+            
+        Returns:
+            dict: Results from all methods
+        """
         results = {}
         
         # 1. Correlation Analysis
