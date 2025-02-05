@@ -1,9 +1,9 @@
 {
     "transfer_entropy": {
-        "Foot_Traffic \u2192 Weather": 0.04582913535616447,
-        "Social_Media \u2192 Weather": 0.04582913535616447,
-        "Sales \u2192 Weather": 0.04582913535616447,
-        "Competitor \u2192 Weather": 0.04582913535616447,
+        "Foot_Traffic \u2192 Weather": 0.034510352213670846,
+        "Social_Media \u2192 Weather": 0.034510352213670846,
+        "Sales \u2192 Weather": 0.034510352213670846,
+        "Competitor \u2192 Weather": 0.034510352213670846,
         "Weather \u2192 Foot_Traffic": 0.6727633991213761,
         "Social_Media \u2192 Foot_Traffic": 0.6727633991213761,
         "Sales \u2192 Foot_Traffic": 0.6727633991213761,
