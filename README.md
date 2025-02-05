@@ -99,4 +99,4 @@ coffee_causality/
 ## License
 
 GPLv3
->>>>>>> 6a310f4 (Updated Jupyter Book with latest changes)
+
