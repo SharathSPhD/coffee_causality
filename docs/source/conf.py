@@ -1,9 +1,6 @@
 # Configuration file for the Sphinx documentation builder.
 import os
 import sys
-import os
-import sys
-
 # Add project root to Python path
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
 sys.path.insert(0, root_dir)
@@ -54,7 +51,7 @@ autodoc_default_options = {
     'exclude-members': '__weakref__'
 }
 
-# Napoleon settings
+# -- Napoleon settings -----------------------------------------------------
 napoleon_google_docstring = True
 napoleon_numpy_docstring = True
 napoleon_include_init_with_doc = False
@@ -67,3 +64,8 @@ napoleon_use_ivar = False
 napoleon_use_param = True
 napoleon_use_rtype = True
 napoleon_type_aliases = None
+
+# -- Autodoc settings ----------------------------------------------------
+autodoc_typehints = 'description'
+autodoc_member_order = 'bysource'
+autoclass_content = 'both'
