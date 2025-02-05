@@ -7,7 +7,7 @@ A detailed interactive tutorial for this project is available at:
 The tutorial is organized into four main parts:
 
 Part A: Data Generation and Initial Analysis
-------------------------------------------
+----------------------------------------------
 This tutorial covers:
 
 * Setting up the synthetic coffee shop data generator
@@ -22,7 +22,7 @@ Key concepts demonstrated:
    * Building composite visualizations
 
 Part B: Statistical Analysis
---------------------------
+-----------------------------
 This section explores:
 
 * Correlation analysis between variables
@@ -37,7 +37,7 @@ Key concepts demonstrated:
    * Model diagnostics and residual analysis
 
 Part C: Causal Analysis Methods
------------------------------
+--------------------------------
 Advanced analysis including:
 
 * Instrumental Variables (IV) analysis using weather as an instrument
@@ -51,7 +51,7 @@ Key concepts demonstrated:
    * Treatment effect estimation
 
 Part D: Information Flow Analysis
-------------------------------
+----------------------------------
 Final analysis covering:
 
 * Transfer entropy calculations

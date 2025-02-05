@@ -1,30 +1,44 @@
-Welcome to Coffee Causality Analysis
-================================
+Coffee Shop Causality Analysis
+===============================
 
-A Python package demonstrating causal inference methods through a coffee shop business case study.
-
-For interactive tutorials and examples, check our `Tutorial Website <https://sharathsphd.github.io/coffee_causality/intro.html>`_. This documentation covers the API reference and implementation details.
+Welcome to the Coffee Shop Causality Analysis documentation! This project provides tools for analyzing causal relationships in coffee shop data using various methods including Instrumental Variables (IV), Double Machine Learning (DML), and Transfer Entropy.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   readme
-   modules
+   installation
+   tutorials
    contributing
+   modules
 
-The Project
-----------
-Coffee Causality Analysis provides tools to:
+Features
+--------
+- Causal analysis using multiple methods:
+   * Instrumental Variables (IV)
+   * Double Machine Learning (DML)
+   * Transfer Entropy Analysis
+- Comprehensive visualization tools
+- Interactive data exploration
+- Statistical validation techniques
 
-* Generate synthetic coffee shop data with hidden confounders
-* Implement various causal inference methods
-* Create interactive visualizations
-* Tell data-driven stories
+Getting Started
+----------------
+To get started, check out the :doc:`installation` guide followed by the :doc:`tutorials`.
 
-Indices and tables
-==================
+Quick Example
+--------------
+.. code-block:: python
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   from causal_analysis import CausalAnalyzer
+   from visualization import CausalVisualizer
+
+   # Initialize analyzer and visualizer
+   analyzer = CausalAnalyzer()
+   visualizer = CausalVisualizer()
+
+   # Analyze causal relationships
+   results = analyzer.double_ml_analysis(data, "Weather", "Sales", ["Foot_Traffic"])
+
+   # Visualize results
+   visualizer.plot_dml_effects(results)

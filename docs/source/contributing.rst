@@ -4,7 +4,7 @@ Contributing
 We welcome contributions to Coffee Causality Analysis! Here's how to get started:
 
 Development Setup
-----------------
+-----------------
 
 1. Fork the Repository
 2. Clone your fork::
@@ -23,7 +23,7 @@ Development Setup
     pip install -r requirements.txt
 
 Pull Request Process
-------------------
+---------------------
 
 1. Create a feature branch
 2. Make your changes

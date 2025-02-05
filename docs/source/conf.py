@@ -1,7 +1,17 @@
 # Configuration file for the Sphinx documentation builder.
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../..'))
+import os
+import sys
+
+# Add project root to Python path
+root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
+sys.path.insert(0, root_dir)
+
+# Add src directory to Python path
+src_dir = os.path.join(root_dir, 'src')
+if src_dir not in sys.path:
+    sys.path.insert(0, src_dir)
 
 # -- Project information -----------------------------------------------------
 project = 'Coffee Causality Analysis'
@@ -33,10 +43,14 @@ html_theme_options = {
 
 # -- Extension configuration ------------------------------------------------
 autodoc_default_options = {
-    'members': True,
+    "members": True,
+    "undoc-members": True,
+    "private-members": False,
+    "special-members": "__init__",
+    "inherited-members": False,
+    "show-inheritance": True,
+    "no-index": True,  # Prevent duplicate indexing
     'member-order': 'bysource',
-    'special-members': '__init__',
-    'undoc-members': True,
     'exclude-members': '__weakref__'
 }
 
