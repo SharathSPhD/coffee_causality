@@ -1,8 +1,8 @@
-API Reference
-============
+Code Reference
+=============
 
 .. toctree::
    :maxdepth: 2
 
-   causal_analysis
-   visualization
+   src.causal_analysis
+   src.visualization
